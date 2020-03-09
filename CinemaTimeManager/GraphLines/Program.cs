@@ -22,16 +22,10 @@ namespace GraphLines
                 duration[i] = Convert.ToInt32(Console.ReadLine());
             }
 
-            Console.WriteLine("Могут ли повторяться фильмы?(да/нет)");
-            string answ = Console.ReadLine();
-            bool allowReiteration = false;
-            if(answ == "да")
-            {
-                allowReiteration = true;
-            }
+            
             
 
-            CinemaTimeManager gl = new CinemaTimeManager(new Node( timeLeft, names, duration, "РАСПИСАНИЕ: \n", new List<string>()), allowReiteration);
+            CinemaTimeManager gl = new CinemaTimeManager(new Node( timeLeft, names, duration, "РАСПИСАНИЕ: \n", new List<string>()));
             gl.CreateShedules();
             gl.DisplayAnswer();
         }
