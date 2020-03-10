@@ -34,9 +34,11 @@ namespace GraphLines
             gl.CreateShedules();
             gl.DisplayAnswer();
             resultEnds = gl.Sort();
-            foreach( Node node in resultEnds)
+            for (int i = 0; i < hallsCount; i++)
             {
-
+                Console.WriteLine($"ЗАЛ №{i+1}");
+                Console.WriteLine(resultEnds[i].variantOfShedule);
+                Console.WriteLine($"свободное оставшееся время{resultEnds[i].timeLeft} \n");
             }
         }
     }
