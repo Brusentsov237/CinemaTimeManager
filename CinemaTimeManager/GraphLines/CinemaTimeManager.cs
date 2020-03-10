@@ -7,12 +7,13 @@ namespace GraphLines
     public class CinemaTimeManager
     {
         Node root;
-        
+        public List<Node> resultEnds = new List<Node>();
         public CinemaTimeManager(Node node)
         {
             root = node;
             
         }
+
         public void CreateShedules()
         {
             Create(root);
@@ -54,9 +55,28 @@ namespace GraphLines
             }
             else
             {
-                Console.WriteLine(node.variantOfShedule);
-                Console.WriteLine($"свободное оставшееся время{node.timeLeft} \n");
+                resultEnds.Add(node);
+                //Console.WriteLine(node.variantOfShedule);
+                //Console.WriteLine($"свободное оставшееся время{node.timeLeft} \n");
             }
+        }
+        public  List<Node> Sort()
+        {
+            for (int i = 0; i< resultEnds.Count-1; i++)
+            {
+                int min = i;
+                for (int j = i + 1; j< resultEnds.Count; j++)
+                {
+                    if (resultEnds[j].timeLeft < resultEnds[min].timeLeft)
+                    {
+                        min = j;
+                    }
+                }
+                Node dummy = resultEnds[i];
+                resultEnds[i] = resultEnds[min];
+                resultEnds[min] = dummy;
+            }
+            return resultEnds;
         }
     }
 }

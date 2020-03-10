@@ -7,9 +7,14 @@ namespace GraphLines
     {
         static void Main(string[] args)
         {
+            List<Node> resultEnds = new List<Node>();
+
             Console.WriteLine("Введите длину рабочего дня кинотеатра в минутах:");
             int timeLeft = Convert.ToInt32(Console.ReadLine());
-            
+
+            Console.WriteLine("Введите количество залов:");
+            int hallsCount = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Введите количество фильмов:");
             int count = Convert.ToInt32(Console.ReadLine());
             var names = new string[count];
@@ -28,6 +33,11 @@ namespace GraphLines
             CinemaTimeManager gl = new CinemaTimeManager(new Node( timeLeft, names, duration, "РАСПИСАНИЕ: \n", new List<string>()));
             gl.CreateShedules();
             gl.DisplayAnswer();
+            resultEnds = gl.Sort();
+            foreach( Node node in resultEnds)
+            {
+
+            }
         }
     }
 }
